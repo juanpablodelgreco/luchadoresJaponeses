@@ -11,7 +11,7 @@ public class Luchador {
 		this.domina = 0;
 	}
 
-	public boolean domina(Luchador l) {
+	public boolean dominaA(Luchador l) {
 		boolean domina = false;
 		if (l.peso < this.peso && l.altura < this.altura) {
 			domina = true;

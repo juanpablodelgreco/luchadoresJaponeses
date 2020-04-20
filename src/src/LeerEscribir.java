@@ -6,33 +6,20 @@ import java.util.Scanner;
 
 public class LeerEscribir {
 	
-	public static int leerCantLuchadores(String path) {
-		int cantLuchadores = 0;
-		Scanner sc;
-		try {
-			sc = new Scanner(new File(path));
-			cantLuchadores = sc.nextInt();
-			sc.close();
-			return cantLuchadores;
-		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo abrir el archivo para la cantidad");
-		}
-		return 1;
-	}
-	
-	public static void leerLuchadores(String path, Luchador[] l) {
+	public static Luchador[] leerLuchadores(String path) {
 		try {
 			int i = 0;
 			Scanner sc = new Scanner(new File(path));
-			sc.nextInt();
-			while (sc.hasNextInt()) {
-				l[i].setAltura(sc.nextInt());
-				l[i].setPeso(sc.nextInt());
-				i++;
+			Luchador[] luchadores = new Luchador[sc.nextInt()];
+			for (i = 0; i < luchadores.length; i++) {
+				Luchador luchador = new Luchador(sc.nextInt(), sc.nextInt());
+				luchadores[i] = luchador;
 			}
 			sc.close();
+			return luchadores;
 		} catch (FileNotFoundException e) {
 			System.out.println("No se pudo abrir el archivo " + path);
 		}
+		return null;
 	}
 }
