@@ -2,6 +2,7 @@ package src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class LeerEscribir {
@@ -21,5 +22,18 @@ public class LeerEscribir {
 			System.out.println("No se pudo abrir el archivo " + path);
 		}
 		return null;
+	}
+	
+	public static void escribir(String path, Luchador[] l) {
+		try {
+			PrintWriter pw = new PrintWriter(new File(path));
+			for (Luchador luchador : l) {
+				pw.println(luchador.getDomina());
+			}
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se pudo crear el archivo " + path);
+		}
+
 	}
 }

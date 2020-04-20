@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		String inputPath = "1.txt";
-		int cantLuchadores = 0;
+		String outputPath = "1.out";
 		Luchador[] luchadores = null;
 		luchadores = LeerEscribir.leerLuchadores(inputPath);
 		for (int i = 0; i <luchadores.length; i++) {
@@ -13,6 +13,7 @@ public class Main {
 					luchadores[i].setDomina(luchadores[i].getDomina()+1);
 			}
 		}
+		LeerEscribir.escribir(outputPath, luchadores);
 		System.out.println("-------------------------------------------------");
 		for (Luchador l : luchadores) {
 			System.out.println(l);
