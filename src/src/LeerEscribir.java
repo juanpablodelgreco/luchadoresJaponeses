@@ -6,8 +6,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class LeerEscribir {
-	
-	public static Luchador[] leerLuchadores(String path) {
+
+	public static void leerLuchadores(String path, Torneo t) {
 		try {
 			int i = 0;
 			Scanner sc = new Scanner(new File(path));
@@ -17,17 +17,16 @@ public class LeerEscribir {
 				luchadores[i] = luchador;
 			}
 			sc.close();
-			return luchadores;
+			t.setLuchadores(luchadores);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se pudo abrir el archivo " + path);
 		}
-		return null;
 	}
-	
-	public static void escribir(String path, Luchador[] l) {
+
+	public static void escribir(String path, Torneo t) {
 		try {
 			PrintWriter pw = new PrintWriter(new File(path));
-			for (Luchador luchador : l) {
+			for (Luchador luchador : t.getLuchadores()) {
 				pw.println(luchador.getDomina());
 			}
 			pw.close();
